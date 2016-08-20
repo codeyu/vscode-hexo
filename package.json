@@ -1,0 +1,44 @@
+{
+  "name": "vscode-hexo",
+  "displayName": "vscode-hexo",
+  "description": "VSCode extension to manage hexo commands",
+  "version": "0.0.1",
+  "publisher": "codeyu",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:hexo-script.init",
+    "onCommand:hexo-script.new"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hexo-script.init",
+        "title": "hexo init",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.new",
+        "title": "hexo new",
+        "category": "hexo"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.5",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "tree-kill": "^1.1.0"
+  }
+}
