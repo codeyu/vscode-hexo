@@ -2,8 +2,9 @@
   "name": "vscode-hexo",
   "displayName": "vscode-hexo",
   "description": "VSCode extension to manage hexo commands",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "publisher": "codeyu",
+  "icon": "hexo-logo.png",
   "engines": {
     "vscode": "^1.0.0"
   },
@@ -12,7 +13,13 @@
   ],
   "activationEvents": [
     "onCommand:hexo-script.init",
-    "onCommand:hexo-script.new"
+    "onCommand:hexo-script.new",
+    "onCommand:hexo-script.generate",
+    "onCommand:hexo-script.server",
+    "onCommand:hexo-script.stop",
+    "onCommand:hexo-script.deploy",
+    "onCommand:hexo-script.publish",
+    "onCommand:hexo-script.clean"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -25,6 +32,36 @@
       {
         "command": "hexo-script.new",
         "title": "hexo new",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.generate",
+        "title": "hexo generate",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.server",
+        "title": "hexo server",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.stop",
+        "title": "stop hexo server",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.deploy",
+        "title": "hexo deploy",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.publish",
+        "title": "hexo publish",
+        "category": "hexo"
+      },
+      {
+        "command": "hexo-script.clean",
+        "title": "hexo clean",
         "category": "hexo"
       }
     ]

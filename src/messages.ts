@@ -9,7 +9,7 @@ export function noPackageError () {
 
 export function alreadyExistsError () {
     
-    Window.showErrorMessage('\'package.json\' already exists');
+    Window.showErrorMessage('\'hexo site\' already exists');
 };
 
 
@@ -50,7 +50,7 @@ export function cannotWriteError () {
 
 export function createdInfo () {
     
-    Window.showInformationMessage('\'package.json\' created successfuly');
+    Window.showInformationMessage('\'hexo site\' created successfuly');
 };
 
 
@@ -63,4 +63,9 @@ export function noValueError () {
 export function invalidTagError () {
     
     Window.showErrorMessage('Tag is invalid');
+};
+
+export function invalidOptionError () {
+    
+    Window.showErrorMessage('Option is invalid');
 };

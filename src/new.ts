@@ -18,7 +18,7 @@ export default function () {
 
     Window.showInputBox({
         prompt: 'Input Layout',
-        placeHolder: 'post is the default layout'
+        placeHolder: 'post, page, draft'
     })
     .then((value) => {
         
@@ -28,14 +28,15 @@ export default function () {
        
         return Window.showInputBox({
             prompt: 'Input title',
-            placeHolder: '',
-            value: 'Hello World'
+            placeHolder: ''
         });
     })
     .then((value) => {
-        if (value) {
-            options.Title = value;
+        if (!value) {
+            Messages.noValueError();
+            return;
         }
-        runCommand(['new', options.Layout,options.Title])
+        options.Title = value;
+        runCommand(['new', options.Layout, options.Title])
     });
 };

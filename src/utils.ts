@@ -2,7 +2,6 @@ import * as Fs from 'fs';
 import * as Path from 'path';
 
 import { workspace as Workspace } from 'vscode';
-
 export function packageExists () {
     
     if (!Workspace.rootPath) {
@@ -10,9 +9,10 @@ export function packageExists () {
     }
 
     try {
-        const filename = Path.join(Workspace.rootPath, 'package.json');
-        const stat = Fs.statSync(filename);
-        return stat && stat.isFile();
+        const pkgPath = Path.join(Workspace.rootPath, 'package.json');
+        let content = Fs.readFileSync(pkgPath);
+        let json = JSON.parse(content.toString());
+        return typeof json.hexo === 'object';
     }
     catch (ignored) {
         return false;

@@ -8,6 +8,11 @@ import { runCommand } from './run-command';
 
 import hexoInit from './init';
 import hexoNew from './new';
+import hexoGenerate from './generate';
+import {hexoServer,hexoStopServer} from './server';
+import hexoDeploy from './deploy';
+import hexoPublish from './publish';
+import hexoClean from './clean';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export const activate = function (context: ExtensionContext) {
@@ -21,7 +26,13 @@ export const activate = function (context: ExtensionContext) {
     // The commandId parameter must match the command field in package.json
     const disposables = [
         Commands.registerCommand('hexo-script.init', hexoInit),  
-        Commands.registerCommand('hexo-script.new', hexoNew), 
+        Commands.registerCommand('hexo-script.new', hexoNew),
+        Commands.registerCommand('hexo-script.generate', hexoGenerate),  
+        Commands.registerCommand('hexo-script.server', hexoServer),
+        Commands.registerCommand('hexo-script.stop', hexoStopServer),
+        Commands.registerCommand('hexo-script.deploy', hexoDeploy),  
+        Commands.registerCommand('hexo-script.publish', hexoPublish),
+        Commands.registerCommand('hexo-script.clean', hexoClean) 
     ];
     
 	context.subscriptions.push(...disposables, outputChannel);

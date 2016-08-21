@@ -37,7 +37,10 @@ export function runCommand (args: string[]) {
     const child = exec(cmd, options);
     
     childs.set(child.pid, { child: child, cmd: cmd });
-    
+    child.on('SIGINT', function () {
+        outputChannel.appendLine('Got a SIGINT. Goodbye cruel world');
+        process.exit(0);
+    });
     child.on('exit', (code, signal) => {
         
         if (signal === 'SIGTERM' || childs.get(child.pid).killedByUs) {
