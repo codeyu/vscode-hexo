@@ -12,10 +12,8 @@ export default function () {
         return;
     }
 
-    Window.showInputBox({
-        prompt: 'Input Option',
-        placeHolder: '-d, -w,'
-    })
+    Window
+    .showQuickPick(['-d', '-w'], {placeHolder: '-d for deply, -w for file change watching.'})
     .then((value) => {
         if (!value) {
             runCommand(['generate'])

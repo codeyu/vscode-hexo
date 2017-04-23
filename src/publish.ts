@@ -16,10 +16,8 @@ export default function () {
         FileName: ''
     };
 
-    Window.showInputBox({
-        prompt: 'Input Layout',
-        placeHolder: 'post, page'
-    })
+    Window
+    .showQuickPick(['post', 'page'], {placeHolder: 'Please select a layout to publish.'})
     .then((value) => {
         if (value) {
             options.Layout = value.toLowerCase();
