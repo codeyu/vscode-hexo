@@ -16,10 +16,8 @@ export default function () {
         Title: 'Hello World'
     };
 
-    Window.showInputBox({
-        prompt: 'Input Layout',
-        placeHolder: 'post, page, draft'
-    })
+    Window
+    .showQuickPick(['post', 'page', 'draft'], {placeHolder: 'Please select a kind of layout.'})
     .then((value) => {
         
         if (value) {

@@ -13,10 +13,8 @@ export function hexoServer () {
         return;
     }
 
-    Window.showInputBox({
-        prompt: 'Input Option',
-        placeHolder: '-p, -s, -l'
-    })
+    Window
+    .showQuickPick(['-p', '-s', '-l'], {placeHolder: "Please specify the option."})
     .then((value) => {
         if (!value) {
             runCommand(['server'])
