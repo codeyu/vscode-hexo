@@ -16,24 +16,26 @@ export default function () {
         FileName: ''
     };
 
-    Window
-    .showQuickPick(['post', 'page'], {placeHolder: 'Please select a layout to publish.'})
-    .then((value) => {
-        if (value) {
-            options.Layout = value.toLowerCase();
-        }
-       
-        return Window.showInputBox({
-            prompt: 'Input filename',
-            placeHolder: ''
-        });
+    Workspace.findFiles("source/_drafts/*", "").then((files) => {
+        return Window.showQuickPick(files.map((u)=> {
+            return Path.basename(u.fsPath, Path.extname(u.fsPath));
+        }, {placeHolder: 'Please select a file to publish.'});
     })
     .then((value) => {
-        if (!value) {
+        if (value) {
+            options.FileName = value;
+            return Window.showQuickPick(['post', 'page'], {placeHolder: 'Please select a layout to publish.'});
+        } else {
             Messages.noValueError();
             return;
         }
-        options.FileName = value;
-        runCommand(['publish', options.Layout, options.FileName])
+    })
+    .then((value) => {
+        if (value) {
+            options.Layout = value;
+            runCommand(['publish', options.Layout, options.FileName])
+        } else {
+            Messages.noValueError();
+        }
     });
 };
