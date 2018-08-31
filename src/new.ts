@@ -34,7 +34,7 @@ export default function () {
             Messages.noValueError();
             return;
         }
-        options.Title = value;
+        options.Title = `"{value}"`;
         runCommand(['new', options.Layout, options.Title])
     });
 };
